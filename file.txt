@@ -7755,3 +7755,48 @@ mysql> SELECT Artist.Name AS Artist, COUNT(Track.TrackId) AS Track FROM Artist
 +--------------+-------+
 5 rows in set (0.00 sec)
 
+mysql> INSERT INTO MediaType (Name)
+    -> VALUES ("Test MediaType 1");
+Query OK, 1 row affected (0.03 sec)
+
+mysql> INSERT INTO Album (Title,ArtistId)
+    -> VALUES ("Boy", 150);
+Query OK, 1 row affected (0.09 sec)
+
+mysql> \c
+mysql> /c
+    -> 
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '/c' at line 1
+mysql> c
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'c' at line 1
+mysql> INSERT INTO Track (Name,AlbumId,MediaTypeId,GenreId,Composer,Milliseconds,Bytes,UnitPrice)
+    -> VALUES ("Extra Track",348,2,1,"U2",290000,1234,0.99);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> SELECT Name FROM Track WHERE Name = "Extra Track";
++-------------+
+| Name        |
++-------------+
+| Extra Track |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT Artist.Name as Artist, Track.Name as Track 
+    -> FROM Artist
+    -> WHERE Artist.Name = "U2"
+    -> ;
+ERROR 1054 (42S22): Unknown column 'Track.Name' in 'field list'
+mysql> SELECT Artist.Name as Artist, Track.Name as Track
+    -> FROM Artist
+    -> INNER JOIN Album ON Artist.ArtistId = Album.ArtistId
+    -> INNER JOIN Track ON Album.AlbumId = Track.AlbumId
+    -> WHERE Track.Name = "Extra Track";
++--------+-------------+
+| Artist | Track       |
++--------+-------------+
+| U2     | Extra Track |
++--------+-------------+
+1 row in set (0.00 sec)
+
