@@ -1,5 +1,6 @@
 import os 
 import pymysql
+import datetime
 
 # Get username from Gitpod workspace 
 # (Modify this variable if running on another environment)
@@ -11,14 +12,12 @@ connection = pymysql.connect(host = 'localhost',
                              password = '',
                              db = "Chinook") 
 
-
-try: 
-    # Run a query
+try:
+    # Run Query
     with connection.cursor() as cursor:
-        sql = "SELECT * FROM Artist;"
-        cursor.execute(sql)
-        result = cursor.fetchall()
-        print(result)
-finally: 
-    # Close the connection, regardless of whether the above was successful 
+        row = ("Bob", 21, "1990-02-06 23:04:56")
+        cursor.execute("INSERT INTO Friends VALUES(%s, %s, %s);", row) 
+        connection.commit()
+finally:
+    # Make sure to close connection
     connection.close()
