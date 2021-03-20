@@ -5072,3 +5072,43 @@ mysql> SELECT MediaType.Name AS MediaType,
     -> FROM MediaType
     -> INNER JOIN Track ON MediaType.MediaTypeId = Track.MediaTypeId;
 ERROR 1140 (42000): In aggregated query without GROUP BY, expression #1 of SELECT list contains nonaggregated column 'Chinook.MediaType.Name'; this is incompatible with sql_mode=only_full_group_by
+mysql> SELECT MIN(LastName) FROM Customer; 
++---------------+
+| MIN(LastName) |
++---------------+
+| Almeida       |
++---------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT MIN(BirthDate) FROM Employee;
++---------------------+
+| MIN(BirthDate)      |
++---------------------+
+| 1947-09-19 00:00:00 |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT MAX(HireDate) FROM Employee;
++---------------------+
+| MAX(HireDate)       |
++---------------------+
+| 2004-03-04 00:00:00 |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT ROUND(AVG(Total),2) FROM Invoice;
++---------------------+
+| ROUND(AVG(Total),2) |
++---------------------+
+|                5.65 |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT AVG(Total) FROM Invoice;
++------------+
+| AVG(Total) |
++------------+
+|   5.651942 |
++------------+
+1 row in set (0.00 sec)
+
