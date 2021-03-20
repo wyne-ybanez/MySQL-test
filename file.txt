@@ -7800,3 +7800,5 @@ mysql> SELECT Artist.Name as Artist, Track.Name as Track
 +--------+-------------+
 1 row in set (0.00 sec)
 
+mysql> Terminal close -- exit!
+Aborted
