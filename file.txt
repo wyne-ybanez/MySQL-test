@@ -7802,3 +7802,62 @@ mysql> SELECT Artist.Name as Artist, Track.Name as Track
 
 mysql> Terminal close -- exit!
 Aborted
+mysql> show tables
+    -> ;
++-------------------+
+| Tables_in_Chinook |
++-------------------+
+| Album             |
+| Artist            |
+| Customer          |
+| Employee          |
+| Genre             |
+| Invoice           |
+| InvoiceLine       |
+| MediaType         |
+| Playlist          |
+| PlaylistTrack     |
+| Track             |
++-------------------+
+11 rows in set (0.00 sec)
+
+mysql> show tables;
++-------------------+
+| Tables_in_Chinook |
++-------------------+
+| Album             |
+| Artist            |
+| Customer          |
+| Employee          |
+| Friends           |
+| Genre             |
+| Invoice           |
+| InvoiceLine       |
+| MediaType         |
+| Playlist          |
+| PlaylistTrack     |
+| Track             |
++-------------------+
+12 rows in set (0.00 sec)
+
+mysql> select * from Friends;
++------+------+---------------------+
+| name | age  | DOB                 |
++------+------+---------------------+
+| Bob  |   21 | 1990-02-06 23:04:56 |
++------+------+---------------------+
+1 row in set (0.01 sec)
+
+mysql> select * from Friends;
++------+------+---------------------+
+| name | age  | DOB                 |
++------+------+---------------------+
+| Bob  |   23 | 1990-02-06 23:04:56 |
+| Bob  |   23 | 1990-02-06 23:04:56 |
+| Jim  |   24 | 1995-05-09 13:12:45 |
+| Fred |   25 | 1911-09-12 01:01:01 |
++------+------+---------------------+
+4 rows in set (0.00 sec)
+
+mysql> Terminal close -- exit!
+Aborted

@@ -15,12 +15,12 @@ connection = pymysql.connect(host = 'localhost',
 try:
     # Run Query
     with connection.cursor() as cursor:
-        rows = [(23, 'Bob'),
-                (24, 'Jim'),
-                (25, 'Fred')]
-        cursor.executemany("UPDATE Friends SET age = %s WHERE name = %s;",
-                        rows) 
+        list_of_names = ['fred','Fred']
+        # format function used to prepare string
+        format_strings = ','.join(['%s']*len(list_of_names))
+        cursor.execute("DELETE FROM Friends WHERE name in ({});".format(format_strings), list_of_names) 
         connection.commit()
+
 finally:
     # Make sure to close connection
     connection.close()
